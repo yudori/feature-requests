@@ -27,7 +27,7 @@ module.exports = {
     ],
   },
   output: {
-    path: path.join(__dirname, 'feature-requests', 'static', 'build'),
+    path: path.join(__dirname, 'feature_requests', 'static', 'build'),
     publicPath: `${publicHost}/static/build/`,
     filename: '[name].[hash].js',
     chunkFilename: '[id].[hash].js',
@@ -53,7 +53,7 @@ module.exports = {
   plugins: [
     new ExtractTextPlugin('[name].[hash].css'),
     new webpack.ProvidePlugin({ $: 'jquery', jQuery: 'jquery' }),
-    new ManifestRevisionPlugin(path.join(__dirname, 'feature-requests', 'webpack', 'manifest.json'), {
+    new ManifestRevisionPlugin(path.join(__dirname, 'feature_requests', 'webpack', 'manifest.json'), {
       rootAssetPath,
       ignorePaths: ['/js', '/css'],
     }),

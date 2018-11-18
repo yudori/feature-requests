@@ -1,8 +1,8 @@
 # -*- coding: utf-8 -*-
 """Test forms."""
 
-from feature-requests.public.forms import LoginForm
-from feature-requests.user.forms import RegisterForm
+from feature_requests.public.forms import LoginForm
+from feature_requests.user.forms import RegisterForm
 
 
 class TestRegisterForm:

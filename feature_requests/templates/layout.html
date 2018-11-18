@@ -10,12 +10,12 @@
 
   <title>{% block page_title %}
   
-    feature-requests
+    Feature Requests
   
     {% endblock %}
   </title>
-  <meta name="description" content="{% block meta_description %}{% endblock %}">
-  <meta name="author" content="{% block meta_author %}{% endblock %}">
+  <meta name="description" content="{% block meta_description %}An application for making feature requests{% endblock %}">
+  <meta name="author" content="{% block meta_author %}Richard Oyudo{% endblock %}">
 
   <!-- Mobile viewport optimized: h5bp.com/viewport -->
   <meta name="viewport" content="width=device-width">
@@ -25,11 +25,8 @@
   {% block css %}{% endblock %}
 
 </head>
-<body class="{% block body_class %}{% endblock %}">
+<body>
 {% block body %}
-{% with form=form  %}
-{% include "nav.html" %}
-{% endwith %}
 
 <header>{% block header %}{% endblock %}</header>
 

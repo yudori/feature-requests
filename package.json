@@ -1,5 +1,5 @@
 {
-  "name": "feature-requests",
+  "name": "feature_requests",
   "version": "1.0.0",
   "description": "A web application that allows users to create feature requests",
   "scripts": {
@@ -11,20 +11,21 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/yudori/feature-requests.git"
+    "url": "git+https://github.com/yudori/feature_requests.git"
   },
   "author": "Richard Oyudo",
   "license": "BSD-3-Clause",
-  "engines": { "node" : ">=4" },
-  "bugs": {
-    "url": "https://github.com/yudori/feature-requests/issues"
+  "engines": {
+    "node": ">=4"
   },
-  "homepage": "https://github.com/yudori/feature-requests#readme",
+  "bugs": {
+    "url": "https://github.com/yudori/feature_requests/issues"
+  },
+  "homepage": "https://github.com/yudori/feature_requests#readme",
   "dependencies": {
     "bootstrap": "^4.1.3",
     "font-awesome": "^4.7.0",
-    "jquery": "^3.2.1",
-    "popper.js": "^1.14.3"
+    "jquery": "^3.2.1"
   },
   "devDependencies": {
     "babel-core": "^6.25.0",

@@ -1,5 +1,5 @@
 ===============================
-feature-requests
+feature_requests
 ===============================
 
 A web application that allows users to create feature requests
@@ -10,8 +10,8 @@ Quickstart
 
 Run the following commands to bootstrap your environment ::
 
-    git clone https://github.com/yudori/feature-requests
-    cd feature-requests
+    git clone https://github.com/yudori/feature_requests
+    cd feature_requests
     pipenv install --dev
     cp .env.example .env
     npm install

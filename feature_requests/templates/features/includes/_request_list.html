@@ -1,0 +1,22 @@
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <td>Title</td>
+            <td>Client</td>
+            <td>Priority</td>
+            <td>Target Date</td>
+            <td>Product Area</td>
+        </tr>
+    </thead>
+    <tbody>
+        {% for feature in features %}
+        <tr>
+            <td>{{ feature.title }}</td>
+            <td>{{ feature.client.value }}</td>
+            <td>{{ feature.client_priority }}</td>
+            <td>{{ feature.target_date }}</td>
+            <td>{{ feature.product_area.value }}</td>
+        </tr>
+        {% endfor %}
+    <tbody>
+</table>

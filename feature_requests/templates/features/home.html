@@ -1,0 +1,27 @@
+
+{% extends "layout.html" %}
+{% block content %}
+<div class="col-lg-12">
+    <div class="container">
+        <div class="row">
+            <div class="container">
+            <h1 class="display-3">Feature Requests</h1>
+            <p>Got a new way to make this product even better? Enter in the details and we'll look into it as soon as we can!.</p><br/>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="row">
+                    <div class="col-lg-6">
+                        {% include "features/includes/_request_form.html" %}
+                    </div>
+                    <div class="col-lg-6">
+                        {% include "features/includes/_request_list.html" %}
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
+

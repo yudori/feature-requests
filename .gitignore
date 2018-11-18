@@ -49,11 +49,14 @@ env/
 /node_modules/
 
 # webpack-built files
-/feature-requests/static/build/
-/feature-requests/webpack/manifest.json
+/feature_requests/static/build/
+/feature_requests/webpack/manifest.json
 
 # Configuration
 .env
 
 # Development database
 *.db
+
+# Dev Tools
+.vscode/

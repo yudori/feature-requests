@@ -3,8 +3,8 @@
 from factory import PostGenerationMethodCall, Sequence
 from factory.alchemy import SQLAlchemyModelFactory
 
-from feature-requests.database import db
-from feature-requests.user.models import User
+from feature_requests.database import db
+from feature_requests.user.models import User
 
 
 class BaseFactory(SQLAlchemyModelFactory):

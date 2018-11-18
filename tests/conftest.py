@@ -4,8 +4,8 @@
 import pytest
 from webtest import TestApp
 
-from feature-requests.app import create_app
-from feature-requests.database import db as _db
+from feature_requests.app import create_app
+from feature_requests.database import db as _db
 
 from .factories import UserFactory
 
