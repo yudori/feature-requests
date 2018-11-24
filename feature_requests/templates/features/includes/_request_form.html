@@ -1,10 +1,40 @@
 <form id="requestForm" class="form" method="POST" action="/" role="form">
     {{ form.csrf_token }}
-    {% for field in form if field.widget.input_type != 'hidden' %}
     <div class="form-group">
-        {{field.label}}
-        {{field(class_="form-control")}}
+        {{form.title.label}}
+        {{form.title(class_="form-control")}}
     </div>
-    {% endfor %}
-    <p><input class="btn btn-primary" type="submit" value="Submit"></p>
+    <div class="form-group">
+        {{form.description.label}}
+        {{form.description(class_="form-control")}}
+    </div>
+    <div class="row">
+        <div class="col-lg-6">
+            <div class="form-group">
+                {{form.client.label}}
+                {{form.client(class_="form-control")}}
+            </div>
+        </div>
+        <div class="col-lg-6">
+            <div class="form-group">
+                {{form.client_priority.label}}
+                {{form.client_priority(class_="form-control")}}
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-lg-6">
+            <div class="form-group">
+                {{form.product_area.label}}
+                {{form.product_area(class_="form-control")}}
+            </div>
+        </div>
+        <div class="col-lg-6">
+            <div class="form-group">
+                {{form.target_date.label}}
+                {{form.target_date(class_="form-control")}}
+            </div>
+        </div>
+    </div>
+    <p class="submit-container"><input class="btn btn-primary form-control" type="submit" value="Submit Request"></p>
 </form>

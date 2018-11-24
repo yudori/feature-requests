@@ -8,8 +8,16 @@ html {
   overflow-y: scroll;
 }
 
-body {
-  padding-top: 60px;
+.container-fit {
+  margin: 20px 50px;
+}
+
+.header {
+  margin: 20px;
+}
+
+.side-panel {
+  padding: 0 30px;
 }
 
 section {
@@ -20,35 +28,9 @@ textarea {
   resize: vertical;
 }
 
-.container-narrow{
-  margin: 0 auto;
-  max-width: 700px;
+.submit-container {
+  margin-top: 20px
 }
-
-/* Forms */
-
-.navbar-form input[type="text"],
-.navbar-form input[type="password"] {
-  width: 180px;
-}
-
-
-.form-register {
-  width: 50%;
-}
-
-.form-register .form-control {
-  position: relative;
-  font-size: 16px;
-  height: auto;
-  padding: 10px;
-  -webkit-box-sizing: border-box;
-     -moz-box-sizing: border-box;
-          box-sizing: border-box;
-}
-
-/* footer */
-
 footer {
   margin-top: 45px;
   padding-top: 5px;

@@ -1,14 +1,17 @@
-<table class="table table-striped">
+
+<table class="table">
     <thead>
         <tr>
-            <td>Title</td>
-            <td>Client</td>
-            <td>Priority</td>
-            <td>Target Date</td>
-            <td>Product Area</td>
+            <th>Title</th>
+            <th>Client</th>
+            <th>Priority</th>
+            <th>Target Date</th>
+            <th>Product Area</th>
         </tr>
     </thead>
+    
     <tbody>
+        {% if features %}
         {% for feature in features %}
         <tr>
             <td>{{ feature.title }}</td>
@@ -18,5 +21,10 @@
             <td>{{ feature.product_area.value }}</td>
         </tr>
         {% endfor %}
+        {% else %}
+        <tr>
+            <td colspan="5"><center>Nothing to see here<center><td>
+        </tr>
+        {% endif %}
     <tbody>
 </table>
