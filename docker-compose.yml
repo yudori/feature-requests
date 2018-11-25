@@ -1,0 +1,15 @@
+version: "2"
+services:
+  flask:
+    build:
+      context: .
+      dockerfile: dockerfiles/flask/Dockerfile
+    command: "gunicorn feature_requests.app:create_app() -b 0.0.0.0:5000 -w 3"
+    user: flask
+    env_file: .env
+  nginx:
+    build: dockerfiles/nginx
+    depends_on:
+      - flask
+    ports:
+      - "80:80" 

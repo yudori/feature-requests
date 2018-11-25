@@ -1,6 +1,9 @@
+Feature Requests
 ===============================
-feature_requests
-===============================
+
+.. image:: https://img.shields.io/travis/yudori/feature-requests.svg
+        :target: https://travis-ci.org/yudori/feature-requests
+
 
 A web application that allows users to create feature requests
 
@@ -8,7 +11,7 @@ A web application that allows users to create feature requests
 Quickstart
 ----------
 
-Run the following commands to bootstrap your environment ::
+Run the following commands to bootstrap your environment :
 
     git clone https://github.com/yudori/feature_requests
     cd feature_requests
@@ -20,7 +23,7 @@ Run the following commands to bootstrap your environment ::
 You will see a pretty welcome screen.
 
 Once you have installed your DBMS, run the following to create your app's
-database tables and perform the initial migration ::
+database tables and perform the initial migration :
 
     flask db init
     flask db upgrade
@@ -30,7 +33,7 @@ database tables and perform the initial migration ::
 Deployment
 ----------
 
-To deploy::
+To deploy:
 
     export FLASK_ENV=production
     export FLASK_DEBUG=0
@@ -45,7 +48,7 @@ variable is unset or is set to ``0``.
 Shell
 -----
 
-To open the interactive shell, run ::
+To open the interactive shell, run :
 
     flask shell
 
@@ -55,7 +58,7 @@ By default, you will have access to the flask ``app``.
 Running Tests
 -------------
 
-To run all tests, run ::
+To run all tests, run :
 
     pytest
 
@@ -63,11 +66,11 @@ To run all tests, run ::
 Migrations
 ----------
 
-Whenever a database migration needs to be made. Run the following commands ::
+Whenever a database migration needs to be made. Run the following commands :
 
     flask db migrate
 
-This will generate a new migration script. Then run ::
+This will generate a new migration script. Then run :
 
     flask db upgrade
 
@@ -86,7 +89,7 @@ their contents appended to their names.  For instance, if you have the
 file ``assets/img/favicon.ico``, this will get copied into something
 like
 ``static/build/img/favicon.fec40b1d14528bf9179da3b6b78079ad.ico``.
-You can then put this line into your header::
+You can then put this line into your header:
 
     <link rel="shortcut icon" href="{{asset_url_for('img/favicon.ico') }}">
 
@@ -94,6 +97,6 @@ to refer to it inside your HTML page.  If all of your static files are
 managed this way, then their filenames will change whenever their
 contents do, and you can ask Flask to tell web browsers that they
 should cache all your assets forever by including the following line
-in your ``settings.py``::
+in your ``settings.py``:
 
     SEND_FILE_MAX_AGE_DEFAULT = 31556926  # one year
