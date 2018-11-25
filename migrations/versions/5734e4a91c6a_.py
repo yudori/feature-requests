@@ -1,8 +1,8 @@
 """empty message
 
-Revision ID: 3d87c5e52ec1
+Revision ID: 5734e4a91c6a
 Revises: 
-Create Date: 2018-11-22 22:34:05.415450
+Create Date: 2018-11-24 21:11:14.663213
 
 """
 from alembic import op
@@ -13,7 +13,7 @@ from feature_requests.features.models import FeatureRequest
 
 
 # revision identifiers, used by Alembic.
-revision = '3d87c5e52ec1'
+revision = '5734e4a91c6a'
 down_revision = None
 branch_labels = None
 depends_on = None
@@ -25,10 +25,10 @@ def upgrade():
     sa.Column('id', sa.Integer(), nullable=False),
     sa.Column('title', sa.String(length=127), nullable=False),
     sa.Column('description', sa.Text(), nullable=True),
-    sa.Column('client', ChoiceType(FeatureRequest.CLIENTS), nullable=False),
+    sa.Column('client', ChoiceType(FeatureRequest.CLIENTS, sa.String(length=8)), nullable=False),
     sa.Column('client_priority', sa.Integer(), nullable=False),
     sa.Column('target_date', sa.Date(), nullable=False),
-    sa.Column('product_area', ChoiceType(FeatureRequest.PRODUCT_AREAS), nullable=False),
+    sa.Column('product_area', ChoiceType(FeatureRequest.PRODUCT_AREAS, sa.String(length=4)), nullable=False),
     sa.Column('created_at', sa.DateTime(), nullable=False),
     sa.PrimaryKeyConstraint('id')
     )

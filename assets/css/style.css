@@ -8,6 +8,10 @@ html {
   overflow-y: scroll;
 }
 
+body {
+  background-color: #eaeaea
+}
+
 .container-fit {
   margin: 20px 50px;
 }
