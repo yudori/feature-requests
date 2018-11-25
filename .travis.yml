@@ -9,12 +9,11 @@ python:
   - 3.5
   - 3.6
 install:
-  - pip install -r requirements/dev.txt
+  - pipenv install
   - nvm install 6.10
   - nvm use 6.10
   - npm install
 before_script:
   - npm run lint
   - npm run build
-  - flask lint
-script: flask test
+script: pytest tests
