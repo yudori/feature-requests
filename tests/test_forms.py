@@ -1,68 +1,33 @@
 # -*- coding: utf-8 -*-
 """Test forms."""
+from datetime import date
 
-from feature_requests.public.forms import LoginForm
-from feature_requests.user.forms import RegisterForm
+from werkzeug.datastructures import MultiDict
+
+from feature_requests.features.forms import FeatureRequestForm
+from feature_requests.features.models import FeatureRequest
 
 
-class TestRegisterForm:
-    """Register form."""
-
-    def test_validate_user_already_registered(self, user):
-        """Enter username that is already registered."""
-        form = RegisterForm(username=user.username, email='foo@bar.com',
-                            password='example', confirm='example')
-
-        assert form.validate() is False
-        assert 'Username already registered' in form.username.errors
-
-    def test_validate_email_already_registered(self, user):
-        """Enter email that is already registered."""
-        form = RegisterForm(username='unique', email=user.email,
-                            password='example', confirm='example')
-
-        assert form.validate() is False
-        assert 'Email already registered' in form.email.errors
+class TestFeatureRequestForm:
+    """FeatureRequest form."""
 
     def test_validate_success(self, db):
-        """Register with success."""
-        form = RegisterForm(username='newusername', email='new@test.test',
-                            password='example', confirm='example')
+        """Validate with success."""
+        form = FeatureRequestForm(MultiDict({'title': 'Request 1', 'client': FeatureRequest.CLIENT_A,
+                                             'client_priority': 1, 'target_date': '2018-12-09',
+                                             'product_area': FeatureRequest.PRODUCT_AREA_BIL}))
         assert form.validate() is True
 
-
-class TestLoginForm:
-    """Login form."""
-
-    def test_validate_success(self, user):
-        """Login successful."""
-        user.set_password('example')
-        user.save()
-        form = LoginForm(username=user.username, password='example')
-        assert form.validate() is True
-        assert form.user == user
-
-    def test_validate_unknown_username(self, db):
-        """Unknown username."""
-        form = LoginForm(username='unknown', password='example')
+    def test_validate_failure(self, db):
+        """Fail validation."""
+        form = FeatureRequestForm(MultiDict({'title': 'Request 1', 'client': FeatureRequest.CLIENT_A,
+                                             'client_priority': 1, 'target_date': '2018-13-09',
+                                             'product_area': FeatureRequest.PRODUCT_AREA_BIL}))
         assert form.validate() is False
-        assert 'Unknown username' in form.username.errors
-        assert form.user is None
+        assert 'Not a valid date value' in form.target_date.errors
 
-    def test_validate_invalid_password(self, user):
-        """Invalid password."""
-        user.set_password('example')
-        user.save()
-        form = LoginForm(username=user.username, password='wrongpassword')
+        form = FeatureRequestForm(MultiDict({'title': 'Request 1', 'client': FeatureRequest.CLIENT_A,
+                                             'client_priority': 1, 'target_date': '2018-12-09',
+                                             'product_area': 'BILL'}))
         assert form.validate() is False
-        assert 'Invalid password' in form.password.errors
-
-    def test_validate_inactive_user(self, user):
-        """Inactive user."""
-        user.active = False
-        user.set_password('example')
-        user.save()
-        # Correct username and password, but user is not activated
-        form = LoginForm(username=user.username, password='example')
-        assert form.validate() is False
-        assert 'User not activated' in form.username.errors
+        assert 'Not a valid choice' in form.product_area.errors

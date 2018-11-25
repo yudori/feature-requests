@@ -1,10 +1,11 @@
 # -*- coding: utf-8 -*-
 """Factories to help in tests."""
+from datetime import date
 from factory import PostGenerationMethodCall, Sequence
 from factory.alchemy import SQLAlchemyModelFactory
 
 from feature_requests.database import db
-from feature_requests.user.models import User
+from feature_requests.features.models import FeatureRequest
 
 
 class BaseFactory(SQLAlchemyModelFactory):
@@ -17,15 +18,14 @@ class BaseFactory(SQLAlchemyModelFactory):
         sqlalchemy_session = db.session
 
 
-class UserFactory(BaseFactory):
-    """User factory."""
+class FeatureRequestFactory(BaseFactory):
+    """FeatureRequest factory."""
 
-    username = Sequence(lambda n: 'user{0}'.format(n))
-    email = Sequence(lambda n: 'user{0}@example.com'.format(n))
-    password = PostGenerationMethodCall('set_password', 'example')
-    active = True
+    title = Sequence(lambda n: 'request{0}'.format(n))
+    target_date = date(2018, 12, 5)
+    product_area = FeatureRequest.PRODUCT_AREA_BIL
 
     class Meta:
         """Factory configuration."""
 
-        model = User
+        model = FeatureRequest

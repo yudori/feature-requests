@@ -10,17 +10,26 @@ from feature_requests.database import Column, Model, SurrogatePK, db, relationsh
 class FeatureRequest(SurrogatePK, Model):
     """A stored feature request."""
 
+    CLIENT_A = u'CLIENT_A'
+    CLIENT_B = u'CLIENT_B'
+    CLIENT_C = u'CLIENT_C'
+
     CLIENTS = [
-        (u'CLIENT_A', u'Client A'),
-        (u'CLIENT_B', u'Client B'),
-        (u'CLIENT_C', u'Client C'),
+        (CLIENT_A, u'Client A'),
+        (CLIENT_B, u'Client B'),
+        (CLIENT_C, u'Client C'),
     ]
 
+    PRODUCT_AREA_POL = u'POL'
+    PRODUCT_AREA_BIL = u'BIL'
+    PRODUCT_AREA_CLA = u'CLA'
+    PRODUCT_AREA_REP = u'REP'
+
     PRODUCT_AREAS = [
-        (u'POL', u'Policies'),
-        (u'BIL', u'Billing'),
-        (u'CLA', u'Claims'),
-        (u'REP', u'Reports'),
+        (PRODUCT_AREA_POL, u'Policies'),
+        (PRODUCT_AREA_BIL, u'Billing'),
+        (PRODUCT_AREA_CLA, u'Claims'),
+        (PRODUCT_AREA_REP, u'Reports'),
     ]
 
     __tablename__ = 'feature_requests'
