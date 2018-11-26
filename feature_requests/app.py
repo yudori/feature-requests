@@ -3,11 +3,19 @@
 from flask import Flask, render_template
 
 from feature_requests import features
-from feature_requests.extensions import cache, csrf_protect, db, debug_toolbar, migrate, webpack
+from feature_requests.extensions import (
+    cache,
+    csrf_protect,
+    db,
+    debug_toolbar,
+    migrate,
+    webpack,
+)
 
 
 def create_app(config_object='feature_requests.settings'):
-    """An application factory, as explained here: http://flask.pocoo.org/docs/patterns/appfactories/.
+    """An application factory, as explained here:
+    http://flask.pocoo.org/docs/patterns/appfactories/.
 
     :param config_object: The configuration object to use.
     """
@@ -38,13 +46,13 @@ def register_blueprints(app):
 
 def register_errorhandlers(app):
     """Register error handlers."""
+
     def render_error(error):
         """Render error template."""
         # If a HTTPException, pull the `code` attribute; default to 500
         error_code = getattr(error, 'code', 500)
         return render_template('{0}.html'.format(error_code)), error_code
+
     for errcode in [404, 500]:
         app.errorhandler(errcode)(render_error)
     return None
-
-

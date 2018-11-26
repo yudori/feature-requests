@@ -23,8 +23,10 @@ def home():
                 description=request.form.get('description'),
                 client=request.form.get('client'),
                 client_priority=request.form.get('client_priority'),
-                target_date=datetime.strptime(request.form.get('target_date'), '%Y-%m-%d').date(),
-                product_area=request.form.get('product_area')
+                target_date=datetime.strptime(
+                    request.form.get('target_date'), '%Y-%m-%d'
+                ).date(),
+                product_area=request.form.get('product_area'),
             )
             feature_request.save()
             flash('You have successfully logged your request', 'success')

@@ -4,7 +4,7 @@ import datetime as dt
 
 from sqlalchemy_utils.types.choice import ChoiceType
 
-from feature_requests.database import Column, Model, SurrogatePK, db, relationship
+from feature_requests.database import Column, Model, SurrogatePK, db
 
 
 class FeatureRequest(SurrogatePK, Model):
@@ -36,12 +36,30 @@ class FeatureRequest(SurrogatePK, Model):
 
     title = Column(db.String(127), nullable=False, info={'label': 'Title'})
     description = Column(db.Text, nullable=True, info={'label': 'Description'})
-    client = Column(ChoiceType(CLIENTS, impl=db.String(8)), nullable=False, info={'label': 'Client'})
-    client_priority = Column(db.Integer, nullable=False, info={'label': 'Client Priority'})
-    target_date = Column(db.Date, nullable=False, info={'label': 'Target Date'})
-    product_area = Column(ChoiceType(PRODUCT_AREAS, impl=db.String(4)), nullable=False, info={'label': 'Product Area'})
-    
-    created_at = Column(db.DateTime, nullable=False, default=dt.datetime.utcnow)
+    client = Column(
+        ChoiceType(CLIENTS, impl=db.String(8)),
+        nullable=False,
+        info={'label': 'Client'}
+    )
+    client_priority = Column(
+        db.Integer, nullable=False, info={'label': 'Client Priority'}
+    )
+    target_date = Column(
+        db.Date,
+        nullable=False,
+        info={'label': 'Target Date'}
+    )
+    product_area = Column(
+        ChoiceType(PRODUCT_AREAS, impl=db.String(4)),
+        nullable=False,
+        info={'label': 'Product Area'},
+    )
+
+    created_at = Column(
+        db.DateTime,
+        nullable=False,
+        default=dt.datetime.utcnow
+    )
 
     def __repr__(self):
         """Represent instance as a unique string."""
@@ -50,11 +68,17 @@ class FeatureRequest(SurrogatePK, Model):
     def save(self, commit=True):
         """Save the record."""
         # optimize priority logic for few database calls
-        client_requests = db.session.query(FeatureRequest).filter(
-            FeatureRequest.client == self.client,
-            FeatureRequest.client_priority >= self.client_priority).order_by(
-            FeatureRequest.client_priority)
-        if client_requests.first() and int(client_requests.first().client_priority) == int(self.client_priority):
+        client_requests = (
+            db.session.query(FeatureRequest)
+            .filter(
+                FeatureRequest.client == self.client,
+                FeatureRequest.client_priority >= self.client_priority,
+            )
+            .order_by(FeatureRequest.client_priority)
+        )
+        if client_requests.first() and int(
+            client_requests.first().client_priority
+        ) == int(self.client_priority):
             current_priority = int(self.client_priority)
             update_requests = []
             for request in client_requests:
@@ -68,5 +92,5 @@ class FeatureRequest(SurrogatePK, Model):
                 db.session.bulk_save_objects(update_requests)
         db.session.add(self)
         if commit:
-            db.session.commit()                
+            db.session.commit()
         return self

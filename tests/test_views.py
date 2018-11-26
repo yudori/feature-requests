@@ -3,11 +3,7 @@
 
 See: http://webtest.readthedocs.org/
 """
-from flask import url_for
-
 from feature_requests.features.models import FeatureRequest
-
-from tests.factories import FeatureRequestFactory
 
 
 class TestFeatureRequestView:

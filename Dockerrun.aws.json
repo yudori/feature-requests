@@ -1,0 +1,32 @@
+{
+    "AWSEBDockerrunVersion": 2,
+    "containerDefinitions": [
+        {
+            "entryPoint": [
+                "./app-entrypoint.sh"
+            ],
+            "essential": true,
+            "name": "flask",
+            "user": "flask",
+            "memory": 128,
+            "image": "yudori/feature-requests"
+        },
+        {
+            "essential": true,
+            "name": "nginx",
+            "portMappings": [
+                {
+                    "containerPort": 80,
+                    "hostPort": 80
+                }
+            ],
+            "memory": 128,
+            "image": "yudori/feature-requests-nginx",
+            "links": [
+                "flask"
+            ]
+        }
+    ],
+    "family": "",
+    "volumes": []
+}

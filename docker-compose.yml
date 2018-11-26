@@ -4,12 +4,16 @@ services:
     build:
       context: .
       dockerfile: dockerfiles/flask/Dockerfile
-    command: "gunicorn feature_requests.app:create_app() -b 0.0.0.0:5000 -w 3"
+    entrypoint:
+      - ./app-entrypoint.sh
     user: flask
     env_file: .env
   nginx:
-    build: dockerfiles/nginx
+    restart: always
+    build:
+      context: .
+      dockerfile: dockerfiles/nginx/Dockerfile
     depends_on:
       - flask
     ports:
-      - "80:80" 
+      - "8000:8000" 

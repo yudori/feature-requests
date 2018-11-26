@@ -1,2 +1,2 @@
-FROM nginx:1.9
-ADD nginx.conf /etc/nginx/nginx.conf 
+FROM nginx:1.15.6
+ADD dockerfiles/nginx/nginx.conf /etc/nginx/nginx.conf 

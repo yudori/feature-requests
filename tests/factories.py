@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 """Factories to help in tests."""
 from datetime import date
-from factory import PostGenerationMethodCall, Sequence
+from factory import Sequence
 from factory.alchemy import SQLAlchemyModelFactory
 
 from feature_requests.database import db

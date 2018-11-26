@@ -5,7 +5,7 @@ COPY . /app
 WORKDIR /app
 RUN pip install pipenv
 RUN pip install gunicorn
-RUN pipenv install
+RUN pipenv install --system --deploy --ignore-pipfile
 RUN groupadd -r flask && useradd -r -g flask flask
 RUN chown -R flask /app
 
