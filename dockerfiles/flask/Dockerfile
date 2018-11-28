@@ -3,8 +3,11 @@ FROM ubuntu:16.04
 COPY . /app
 WORKDIR /app
 
+ENV LC_ALL=C.UTF-8
+ENV LANG=C.UTF-8
+
 RUN apt-get update
-RUN apt-get install -y software-properties-common vim
+RUN apt-get install -y software-properties-common vim curl
 RUN add-apt-repository ppa:jonathonf/python-3.6
 RUN apt-get update
 
@@ -15,7 +18,7 @@ RUN apt-get install -y git
 RUN python3.6 -m pip install pip --upgrade
 RUN python3.6 -m pip install wheel pipenv gunicorn
 
-RUN python3.6 -m pipenv install --system --deploy --ignore-pipfile
+RUN pipenv install --three --system --deploy --ignore-pipfile
 RUN groupadd -r flask && useradd -r -g flask flask
 RUN chown -R flask /app
 
