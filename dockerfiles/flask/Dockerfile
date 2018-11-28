@@ -15,7 +15,7 @@ RUN apt-get install -y git
 RUN python3.6 -m pip install pip --upgrade
 RUN python3.6 -m pip install wheel pipenv gunicorn
 
-RUN pipenv install --system --deploy --ignore-pipfile
+RUN python3.6 -m pipenv install --system --deploy --ignore-pipfile
 RUN groupadd -r flask && useradd -r -g flask flask
 RUN chown -R flask /app
 

@@ -4,7 +4,7 @@ Feature Requests
 [![Build Status](https://travis-ci.org/yudori/feature-requests.svg?branch=master)](https://travis-ci.org/yudori/feature-requests)
 
 
-A web application that allows users to create feature requests
+A web application that allows users to create feature requests running at http://feature-requests-dev.us-east-2.elasticbeanstalk.com/
 
 Dependencies
 ------------
@@ -16,6 +16,14 @@ This project makes use of the tech stack and more:
  * Docker - Container platform
  * Pipenv - Python packaging
  * AWS - Deployment & Cloud services
+
+
+Overview
+--------
+
+This is a python (flask) web application that allows for entering in feature requests. Pushed code changes are validated by continuous integration using travis ci. Frontend and backend linting and tests are carried out to ensure conformity with adopted standards.
+
+Automated builds are carried out on the resulting main docker image via the docker cloud [repository](https://cloud.docker.com/repository/docker/yudori/feature-requests/builds) upon each push. A single command `eb deploy` is then needed to deploy the latest build to a Multicontainer Elastic Beanstalk infrastructure on AWS.
 
 
 Quickstart
@@ -42,13 +50,16 @@ To start up the application, run:
 Deployment
 ----------
 
+Initialize elasticbeanstalk
+
+    eb init
+    eb create
+
+Ensure that the appropriate production environment variables (see .env) are set on the aws console.
+
 To deploy:
 
-    export FLASK_ENV=production
-    export FLASK_DEBUG=0
-    export DATABASE_URL="<YOUR DATABASE URL>"
-    npm run build   # build assets with webpack
-    flask run       # start the flask server
+    eb deploy
 
 In your production environment, make sure the ``FLASK_DEBUG`` environment
 variable is unset or is set to ``0``.
@@ -60,4 +71,3 @@ Running Tests
 To run all tests, run :
 
     pytest
-

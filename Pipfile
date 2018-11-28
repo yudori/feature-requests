@@ -28,6 +28,7 @@ environs = "==4.0.0"
 flask-debugtoolbar = "*"
 wtforms-alchemy = "==0.16.7"
 flask-wtf = "==0.14.2"
+awsebcli = "*"
 
 [dev-packages]
 # Testing
